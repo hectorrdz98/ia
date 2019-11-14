@@ -1,0 +1,10 @@
+ComeSolo triángulo
+ComeSolo cuadrado
+Mondrian
+8 puzzle
+20q
+Nube de Palabras
+Alexa
+Chat bot - Código
+Chat bot - Watson
+Levenshtein

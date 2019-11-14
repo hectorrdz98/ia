@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AgenteViajero</title>
+
+    <link rel="shortcut icon" href="resources/logo.jpg">
+    <link rel="favicon" href="resources/logo.jpg">
+
+    <!-- Compiled and minified CSS -->
+    <link href="resources/font-awesome/css/all.css" rel="stylesheet">
+    <link href="css/bulma.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/p5.min.js"></script>
+</head>
+<body>
+    <div id="diagram-menu">
+        <div id="diagram-options">
+            <section class="hero is-dark">
+                <div class="hero-body">
+                    <h1 class="title">
+                        Information
+                    </h1>
+                    <div class="field">
+                        <label class="label" style="color: white;">Start node</label>
+                        <div class="control">
+                            <input id="node-id" class="input" type="text" placeholder="Insert the first node id">
+                        </div>
+                    </div>
+                    <div class="control">
+                        <button id="btn-perm" class="button is-primary">Permutations</button>
+                    </div>
+                </div>
+            </section>
+            <section class="hero is-light" style="margin: 0px 20px; height: 60%;">
+                <div class="hero-body">
+                    <h1 class="title">
+                        Paths gotten
+                    </h1>
+                    <h2 id="lowestPath" class="subtitle" style="margin-bottom: 0; font-size: 14px;">
+                        Lowest path: 
+                    </h2>
+                    <h2 id="lowestDist" class="subtitle" style="font-size: 14px;">
+                        Lowest distance: 
+                    </h2>
+                    <div id="paths-div" style="height: 250px; overflow-y: auto;"></div>
+                </div>
+            </section>
+        </div>
+        <div id="diagram-show-menu">
+            <i class="fas fa-chevron-right" style="color: white;
+                font-size: 25px;"></i>
+        </div>
+    </div>
+    <div id="design-container"></div>
+</body>
+<script src="js/app.js"></script>
+</html>
