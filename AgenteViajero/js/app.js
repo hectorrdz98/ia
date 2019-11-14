@@ -1,5 +1,5 @@
 
-var menuActive = false;
+var menuActive = true;
 var pathsDiv = $("#paths-div");
 
 $("#diagram-show-menu").click(function () {
@@ -20,10 +20,28 @@ $("#btn-perm").click(function () {
         var initNode = getNodeById(id);
         initialNode = initNode;
         if (initNode) {
+            clearVisited();
             initNode.visited = true;
             paths = [];
             lowestPath = null;
             runSimulation(initNode, [0], [initNode]);
+            appendPaths();
+            initNode.visited = false;
+        }
+    }
+});
+
+$("#btn-heu").click(function () {
+    var id = $("#node-id").val();
+    if (id != "") {
+        var initNode = getNodeById(id);
+        initialNode = initNode;
+        if (initNode) {
+            clearVisited();
+            initNode.visited = true;
+            paths = [];
+            lowestPath = null;
+            runSimulationHeuristic(initNode);
             appendPaths();
             initNode.visited = false;
         }
@@ -87,6 +105,13 @@ function getNodeId() {
     return a;
 }
 
+function clearVisited() {
+    nodes.forEach(node => {
+        node.visited = false;
+        node.nextNode = null;
+    });
+}
+
 function runSimulation(initNode, lengths, path) {
     for (let i = 0; i < nodes.length; i++) {
         if (!nodes[i].visited) {
@@ -132,6 +157,54 @@ function runSimulation(initNode, lengths, path) {
         path.pop();
         lengths.pop();
     }
+
+}
+
+function runSimulationHeuristic(initNode) {
+    var path = [initNode];
+    var totalDist = 0;
+    
+    while (true) {
+        var closestPath = null;
+        for (let i = 0; i < nodes.length; i++) {
+            if (!nodes[i].visited) {
+                var nodesWidth = abs(initNode.x - nodes[i].x);
+                var nodesHeight = abs(initNode.y - nodes[i].y);
+
+                var dist = sqrt(pow(nodesWidth, 2) + pow(nodesHeight, 2));
+
+                if (!closestPath || dist < closestPath.dist) {
+                    closestPath = {
+                        'dist': dist,
+                        'path': nodes[i]
+                    };
+                }
+            }
+        }
+
+        if (closestPath) {
+            closestPath.path.visited = true;
+            totalDist += closestPath.dist;
+            path.push(closestPath.path);
+            initNode = closestPath.path;
+        } else {
+            break;
+        }
+    }
+
+    var nodesWidth = abs(initialNode.x - path[path.length-1].x);
+    var nodesHeight = abs(initialNode.y - path[path.length-1].y);
+
+    totalDist += sqrt(pow(nodesWidth, 2) + pow(nodesHeight, 2));
+    path.push(initialNode);
+
+    paths.push({
+        'dist': totalDist,
+        'path': path.slice(),
+        'color': [parseInt(random(0, 255)), parseInt(random(0, 255)), parseInt(random(0, 255))]
+    });
+
+    lowestPath = paths[0];
 
 }
 

@@ -13,7 +13,7 @@ html {
     position: absolute;
     display: flex;
     align-items: center;
-    transform: translateX(-350px);
+    transform: translateX(0px);
     transition: all 0.5s;
 }
 #diagram-options {
@@ -37,5 +37,6 @@ html {
     opacity: 1;
 }
 #diagram-show-menu i {
+    transform: rotate(180deg);
     transition: all 0.2s;
 }
