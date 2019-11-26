@@ -1,0 +1,10 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#canvasContainer {
+    background-color: red;
+    width: 60%;
+    height: 100vh;
+}
