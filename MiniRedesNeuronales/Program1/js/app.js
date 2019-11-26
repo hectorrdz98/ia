@@ -21,7 +21,26 @@ var testData = [0, 0];
 function draw() {
     clear();
     background(70, 66, 74);
+    drawTexts();
     drawHiddenLayers();
+}
+
+function drawTexts() {
+    push();
+    noStroke();
+    fill(255);
+    strokeWeight(3);
+    textSize(20);
+    textAlign(CENTER, CENTER);
+    text("x: " + testData[0], 100, 50);
+    text("y: " + testData[1], 100, 75);
+    stroke(255);
+    line(80, 100, 120, 100);
+    noStroke();
+    if ( testData[2] ) {
+        text("( " + testData[2] + ", " + testData[3] + " )", 100, 125);
+    }
+    pop();
 }
 
 function drawHiddenLayers() {
@@ -33,8 +52,13 @@ function drawHiddenLayers() {
         textSize(16);
         textAlign(CENTER, CENTER);
         text(hiddenL.name, 300, 100 + (i * 150) - 50 - 10);
+        if (hiddenL.win)
+            fill(60, 87, 161);
         circle(300, 100 + (i * 150), 100);
-        fill(55, 58, 54);
+        if (hiddenL.win)
+            fill(255);
+        else
+            fill(55, 58, 54);
         text("w1: " + hiddenL.w[0], 300, 100 + (i * 150) - 10);
         text("w2: " + hiddenL.w[1], 300, 100 + (i * 150) + 10);
         fill(255);
@@ -67,7 +91,8 @@ $("#hiddenBtn").click(function () {
                 w: [x, y],
                 nW: [ (x / sqrt(pow(x, 2) + pow(y, 2))).toFixed(2),
                       (y / sqrt(pow(x, 2) + pow(y, 2))).toFixed(2) ],
-                result: null
+                result: null,
+                win: false
             });
         }
     }
@@ -81,11 +106,22 @@ $("#testBtn").click(function () {
         (x / sqrt(pow(x, 2) + pow(y, 2))).toFixed(2), (y / sqrt(pow(x, 2) + pow(y, 2))).toFixed(2) ];
 
     if (x != "" && y != "") {
+        var max = null;
         for (let i = 0; i < hiddenLayers.length; i++) {
             const hiddenL = hiddenLayers[i];
+            hiddenL.win = false;
             hiddenL.result = 
                 ((testData[2] * hiddenL.nW[0]) + 
-                (testData[3] * hiddenL.nW[1])).toFixed(2)
+                (testData[3] * hiddenL.nW[1])).toFixed(2);
+            if (max) {
+                if (max.result < hiddenL.result)
+                    max = hiddenL;
+            } else {
+                max = hiddenL;
+            }
+        }
+        if (max) {
+            max.win = true;
         }
     }
 });
