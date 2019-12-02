@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clustering</title>
+
+    <link rel="shortcut icon" href="resources/logo.jpg">
+    <link rel="favicon" href="resources/logo.jpg">
+
+    <!-- Compiled and minified CSS -->
+    <link href="resources/font-awesome/css/all.css" rel="stylesheet">
+    <link href="css/bulma.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/p5.min.js"></script>
+</head>
+<body>
+    <div id="diagram-menu">
+        <div id="diagram-options">
+            <section class="hero is-dark">
+                <div class="hero-body">
+                    <h1 class="title">
+                        Information
+                    </h1>
+                    <h2 id="labelK" class="subtitle" style="margin-top: 0;">
+                        K: 0 
+                    </h2>
+                    <h2 id="labelIte" class="subtitle">
+                        Iterations: 0 
+                    </h2>
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button id="btnRestart" class="button is-link">Restart</button>
+                        </div>
+                        <div class="control" style="background-color: white; border-radius: 4px;">
+                            <button id="btnCluster" class="button is-primary is-outlined">Cluster</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="diagram-show-menu">
+            <i class="fas fa-chevron-right" style="color: white;
+                font-size: 25px;"></i>
+        </div>
+    </div>
+    <div id="design-container"></div>
+</body>
+<script src="js/app.js"></script>
+</html>
