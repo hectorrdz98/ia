@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es" style="overflow-y: auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MiniRedesNeuronales #2</title>
+
+    <link rel="shortcut icon" href="resources/logo.jpg">
+    <link rel="favicon" href="resources/logo.jpg">
+
+    <!-- Compiled and minified CSS -->
+    <link href="css/bulma.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" 
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+    <section class="hero is-dark">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Mini KNN
+                </h1>
+                <h2 class="subtitle">
+                    Insert the datasets or load an existing one, then predict some data!
+                </h2>
+            </div>
+        </div>
+    </section>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Insert new example</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field" style="flex-grow: initial;">
+                            <p class="control is-expanded has-icons-left">
+                                <input id="inputName" class="input" type="text" placeholder="Clasification">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-ad"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field" style="flex-grow: initial;">
+                            <p class="control has-icons-left">
+                                <input id="inputX" class="input is-success" type="number" placeholder="x" 
+                                    style="max-width: 150px;">
+                                <span class="icon is-small is-left">
+                                    <i class="fab fa-amilia"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field" style="flex-grow: initial;">
+                            <p class="control has-icons-left">
+                                <input id="inputY" class="input is-success" type="number" placeholder="y" 
+                                    style="max-width: 150px;">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-bold"></i>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label"></div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <button id="hiddenBtn" class="button is-primary">
+                                    Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container" style="display: flex; justify-content: space-around;">
+                <div>
+                    <h1 class="title">
+                        Examples
+                    </h1>
+                    <h2 class="subtitle">
+                        Here are the examples to use in the KNN
+                    </h2>
+                    <table class="table is-bordered">
+                        <thead>
+                            <tr>
+                                <th>Clasification</th>
+                                <th>x</th>
+                                <th>y</th>
+                                <th>Distance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="examplesTable"></tbody>
+                    </table>
+                </div>
+                <div>
+                    <h1 class="title">
+                        Predict
+                    </h1>
+                    <div class="field is-horizontal">
+                        <div class="field-body">
+                            <div class="field" style="flex-grow: initial;">
+                                <p class="control has-icons-left">
+                                    <input id="inputTestK" class="input is-success" type="number" placeholder="k" 
+                                        style="max-width: 150px;">
+                                    <span class="icon is-small is-left">
+                                        <i class="fab fa-kickstarter-k"></i>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="field" style="flex-grow: initial;">
+                                <p class="control has-icons-left">
+                                    <input id="inputTestX" class="input is-success" type="number" placeholder="x" 
+                                        style="max-width: 150px;">
+                                    <span class="icon is-small is-left">
+                                        <i class="fab fa-amilia"></i>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="field" style="flex-grow: initial;">
+                                <p class="control has-icons-left">
+                                    <input id="inputTestY" class="input is-success" type="number" placeholder="y" 
+                                        style="max-width: 150px;">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-bold"></i>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="control">
+                                <button id="testBtn" class="button is-primary">Test</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 id="resultsLabel" class="subtitle"></h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/app.js"></script>
+</body>
+</html>
