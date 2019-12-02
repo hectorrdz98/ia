@@ -82,12 +82,10 @@ function updateTable(k) {
 }
 
 function findMostFreq(kExamples) {
-    console.log(kExamples);
     var appears = [];
     for (let i = 0; i < kExamples.length; i++) {
         const example = kExamples[i];
         var found = findInArray(appears, example.name);
-        console.log("With " + example.name + " got " + found);
         if (found) {
             found.total++;
         } else {
@@ -97,13 +95,11 @@ function findMostFreq(kExamples) {
             });
         }
     }
-    console.log(appears);
     appears.sort(function(a, b){
         if(a.total > b.total) return -1;
         if(a.total < b.total) return 1;
         return 0;
     });
-    console.log(appears);
     return appears != [] ? appears[0] : null;
 }
 
