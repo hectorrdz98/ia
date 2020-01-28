@@ -30,7 +30,7 @@ class Node {
 
 $("#btnRestart").click(function () {
     nodes = [];
-    for (let i = 0; i < 10000; i++) {
+    for (let i = 0; i < 50000; i++) {
         nodes.push( 
             new Node(
                 Math.floor(Math.random() * maxTamCanvas[0]), 
